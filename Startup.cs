@@ -34,11 +34,11 @@ namespace labo02
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.Configure<CSVSettings>(Configuration.GetSection("CSVSettings"));
+            # region new in labo04
             services.Configure<DBSettings>(Configuration.GetSection("ConnectionStrings"));
-
             
             services.AddDbContext<RegistrationContext>();
+            # endregion
 
             services.AddAutoMapper(typeof(Startup));
 
@@ -79,7 +79,7 @@ namespace labo02
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "labo02 v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "labo04 v1"));
             }
             
 
@@ -93,10 +93,11 @@ namespace labo02
             {
                 endpoints.MapControllers();
             });
-
+            # region new in labo04
             if (context.Database.GetPendingMigrations().Any()) {
                 context.Database.Migrate();
             }
+            # endregion
         }
     }
 }
