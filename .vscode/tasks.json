@@ -77,20 +77,7 @@
             "dependsOn": [
                 "docker-build: debug"
             ],
-            "dockerRun": {
-                "env": {
-                    "ASPNETCORE_URLS": "https://+:5001;http://+:5000",
-                    "ASPNETCORE_Kestrel__Certificates__Default__Password": "SUPER_SECRET_PASSWORD",
-                    "ASPNETCORE_Kestrel__Certificates__Default__Path": "/https/aspnetapp.pfx"
-                },
-                "ports": [
-                    { "containerPort": 5000, "hostPort": 5000 },
-                    { "containerPort": 5001, "hostPort": 5001 }
-                ],
-                "volumes": [
-                    { "localPath": "C:\\Users\\natha\\Documents\\MCT\\Backend\\labo02\\.aspnet\\https", "containerPath": "/https"}
-                ]
-            },
+            "dockerRun": {},
             "netCore": {
                 "appProject": "${workspaceFolder}/labo02.csproj",
                 "enableDebugging": true
